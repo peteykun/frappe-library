@@ -12,7 +12,7 @@ class Book(models.Model):
     title = models.CharField(max_length=200)
     authors = models.ManyToManyField(Author)
     isbn = models.CharField(max_length=10)
-    average_rating = models.DecimalField(decimal_places=2, )
+    average_rating = models.DecimalField(decimal_places=2, max_digits=3)
     language_code = models.CharField(max_length=3)
     num_pages = models.IntegerField()
     ratings_count = models.IntegerField()
