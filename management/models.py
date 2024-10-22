@@ -37,6 +37,10 @@ class Member(models.Model):
         return md5(self.email.encode('utf-8')).hexdigest()
 
     @property
+    def gravatar_url(self, size=100):
+        return 'http://www.gravatar.com/avatar/' + self.email_md5 + '?s=' + str(size)
+
+    @property
     def name(self):
         return self.first_name + ' ' + self.last_name
 
