@@ -1,4 +1,5 @@
 from django.db import models
+from hashlib import md5
 
 # Create your models here.
 class Author(models.Model):
@@ -30,6 +31,14 @@ class Member(models.Model):
     city = models.CharField(max_length=200)
     country = models.CharField(max_length=200)
     zip = models.CharField(max_length=200)
+
+    @property
+    def email_md5(self):
+        return md5(self.email.encode('utf-8'))
+
+    @property
+    def name(self):
+        return self.first_name + ' ' + self.last_name
 
 class Issuance(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
