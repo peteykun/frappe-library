@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
 
@@ -18,13 +18,15 @@ def members(request):
     return HttpResponse(template.render(context, request))
 
 def create_member(request):
-    return HttpResponse("Create member")
+    template = loader.get_template("members/create.html")
+    return HttpResponse(template.render())
 
 def show_member(request, member_id):
     return HttpResponse("You're looking at member %s." % member_id)
 
 def edit_member(request, member_id):
-    return HttpResponse("Editing: member %s." % member_id)
+    member = get_object_or_404(Member, pk=member_id)
+    return render(request, "members/edit.html", {"member": member})
 
 def delete_member(request, member_id):
     return HttpResponse("Deleting: member %s." % member_id)
@@ -39,7 +41,8 @@ def books(request):
     return HttpResponse(template.render(context, request))
 
 def create_book(request):
-    return HttpResponse("Create book")
+    template = loader.get_template("books/create.html")
+    return HttpResponse(template.render())
 
 def show_book(request, book_id):
     return HttpResponse("You're voting on book %s." % book_id)
