@@ -34,7 +34,7 @@ class Member(models.Model):
 
     @property
     def email_md5(self):
-        return md5(self.email.encode('utf-8'))
+        return md5(self.email.encode('utf-8')).hexdigest()
 
     @property
     def name(self):
