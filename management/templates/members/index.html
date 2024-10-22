@@ -131,6 +131,8 @@
                         <thead class="table-light">
                         <tr>
                             <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone Number</th>
                             <th scope="col">Dues</th>
                             <th scope="col">Status</th>
                             <th></th>
@@ -140,7 +142,13 @@
                         {% for member in members.all %}
                         <tr>
                             <td>
-                                {{ member.name }}
+                                {{ member.first_name }} {{ member.last_name }}
+                            </td>
+                            <td>
+                                {{ member.email }}
+                            </td>
+                            <td>
+                                {{ member.phone_number }}
                             </td>
                             <td>
                                 &#8377; 0.00
