@@ -17,8 +17,17 @@ def members(request):
     }
     return HttpResponse(template.render(context, request))
 
-def member(request, member_id):
+def create_member(request):
+    return HttpResponse("Create member")
+
+def show_member(request, member_id):
     return HttpResponse("You're looking at member %s." % member_id)
+
+def edit_member(request, member_id):
+    return HttpResponse("Editing: member %s." % member_id)
+
+def delete_member(request, member_id):
+    return HttpResponse("Deleting: member %s." % member_id)
 
 # Books
 def books(request):
@@ -29,5 +38,14 @@ def books(request):
     }
     return HttpResponse(template.render(context, request))
 
-def book(request, book_id):
+def create_book(request):
+    return HttpResponse("Create book")
+
+def show_book(request, book_id):
     return HttpResponse("You're voting on book %s." % book_id)
+
+def edit_book(request, book_id):
+    return HttpResponse("Editing: book %s." % book_id)
+
+def delete_book(request, book_id):
+    return HttpResponse("Deleting: book %s." % book_id)
